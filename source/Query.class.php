@@ -137,6 +137,15 @@ class Query
         return $this;
     }
 
+    public function where( $pairs )
+    {
+        foreach( $pairs as $field => $value ) {
+            $this->addParameter($field, $value);
+        }
+
+        return $this;
+    }
+
     // Process Values
     private function buildArguments()
     {
@@ -152,13 +161,26 @@ class Query
         return $this->parameters;
     }
 
-    public function get()
+    public function get( $return = 'all' )
     {
         $args = $this->buildArguments();
         $query = new \WP_Query($args);
         $posts = $query->get_posts();
         wp_reset_postdata();
-        return $posts;
+
+        $bean = $posts;
+        switch( $return ) {
+            case 'first':
+                $bean = reset($bean);
+                break;
+            case 'last':
+                $bean = end($bean);
+                break;
+            default:
+                break;
+        }
+
+        return $bean;
     }
 
     // Static methods

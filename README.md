@@ -6,7 +6,9 @@ An abstraction layer for WPDB.
 
 ###Version 0.9.0
 
-- Implements function status to set the post status
+- Enhanced the get method
+- Implemented function where
+- Implemented function status to set the post status
 - Code refactoring
 
 ###Version 0.8.0 
