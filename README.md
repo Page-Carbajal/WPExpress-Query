@@ -5,6 +5,11 @@ An abstraction layer for WPDB.
 ##Change Log
 
 
+###Version 0.10.2
+
+- Fixed array_merge error
+
+
 ###Version 0.10.1
 
 - Changed the Taxonomy registration

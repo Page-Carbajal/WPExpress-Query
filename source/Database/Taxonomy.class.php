@@ -18,7 +18,6 @@ class Taxonomy
     protected $termSlug;
 
 
-
     public function __construct( $bean = null )
     {
         if( is_string($bean) ) {
@@ -104,7 +103,11 @@ class Taxonomy
             }
         }
 
-        register_taxonomy($name, $objects, array_merge($defaultAttributes, $attributes));
+        if( is_array($attributes) ) {
+            $defaultAttributes = array_merge($defaultAttributes, $attributes);
+        }
+
+        register_taxonomy($name, $objects, $defaultAttributes);
 
         return new static($name);
     }
@@ -131,7 +134,7 @@ class Taxonomy
 
     public function setTermsOrder( $orderBy, $asc = true )
     {
-        if( !empty($orderBy) ){
+        if( !empty( $orderBy ) ) {
             $this->termsOrderBy = $orderBy;
         }
 
@@ -140,7 +143,7 @@ class Taxonomy
         return $this;
     }
 
-    public function setTermsLimit($limit)
+    public function setTermsLimit( $limit )
     {
         $this->termsLimit = intval($limit);
         return $this;
@@ -152,19 +155,19 @@ class Taxonomy
             'number' => $this->termsLimit,
         );
 
-        if( isset($this->termsOrderBy) ){
+        if( isset( $this->termsOrderBy ) ) {
             $arguments['order_by'] = $this->termsOrderBy;
         }
 
-        if( isset($this->termsOrder) ){
+        if( isset( $this->termsOrder ) ) {
             $arguments['order'] = $this->termsOrder;
         }
 
-        if( isset($this->termName) ){
+        if( isset( $this->termName ) ) {
             $arguments['name'] = $this->termName;
         }
 
-        if( isset($this->termSlug) ){
+        if( isset( $this->termSlug ) ) {
             $arguments['slug'] = $this->termSlug;
         }
 
@@ -175,7 +178,7 @@ class Taxonomy
 
     public function getTerms()
     {
-        $terms = get_terms( array( $this->name ), $this->getTermsArguments() );
+        $terms = get_terms(array( $this->name ), $this->getTermsArguments());
         return $terms;
     }
 
@@ -187,8 +190,8 @@ class Taxonomy
 
     public function getTermBySlug( $slug, $asArray = false )
     {
-        $terms =  $this->setTermSlug($slug)->setTermsLimit(1)->setTermsOrder('name', true)->getTerms();
-        if( is_array($terms) ){
+        $terms = $this->setTermSlug($slug)->setTermsLimit(1)->setTermsOrder('name', true)->getTerms();
+        if( is_array($terms) ) {
             return ( $asArray ? $terms : reset($terms) );
         }
 
@@ -203,8 +206,8 @@ class Taxonomy
 
     public function getTermByName( $name, $asArray = false )
     {
-        $terms =  $this->setTermName($name)->setTermsLimit(1)->setTermsOrder('name', true)->getTerms();
-        if( is_array($terms) ){
+        $terms = $this->setTermName($name)->setTermsLimit(1)->setTermsOrder('name', true)->getTerms();
+        if( is_array($terms) ) {
             return ( $asArray ? $terms : reset($terms) );
         }
 
