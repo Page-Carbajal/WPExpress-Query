@@ -89,7 +89,7 @@ class Taxonomy
             'show_admin_column'     => false,
             'meta_box_cb'           => null,
             'capabilities'          => array(),
-            'query_var'             => $name,
+            'query_var'             => sanitize_title($name),
             'update_count_callback' => '',
             '_builtin'              => false,
         );

@@ -11,6 +11,7 @@ An abstraction layer for WPDB.
 
 ###Version 0.10.2
 
+- Fixed Taxonomy query_vars declaration
 - Fixed array_merge error
 
 
