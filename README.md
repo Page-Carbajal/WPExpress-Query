@@ -4,6 +4,10 @@ An abstraction layer for WPDB.
  
 ##Change Log
 
+###Version 0.10.3
+
+- Fixed label declarations
+
 
 ###Version 0.10.2
 
