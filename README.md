@@ -4,6 +4,12 @@ An abstraction layer for WPDB.
  
 ##Change Log
 
+
+###Version 0.10.1
+
+- Changed the Taxonomy registration
+
+
 ###Version 0.10.0
 
 - Added empty User, UserRole and Transient classes 

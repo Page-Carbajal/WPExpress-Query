@@ -9,7 +9,6 @@ class Taxonomy
 
     protected $tax;
     protected $name;
-    protected $labels;
     protected $capabilities;
     // Search Terms Parameters
     protected $termsLimit;
@@ -34,7 +33,7 @@ class Taxonomy
 
     }
 
-    protected function setLabels( $name, $pluralName )
+    protected static function getLabels( $name, $pluralName )
     {
         $labels = array(
             'name'                       => $name,
@@ -59,12 +58,7 @@ class Taxonomy
             $labels = apply_filters("wpex_taxonomy_{$name}_labels", $labels);
         }
 
-        $this->labels = $labels;
-    }
-
-    protected function getLabels()
-    {
-        return $this->labels;
+        return $labels;
     }
 
     protected function setCapabilities( $capabilities )
@@ -83,7 +77,7 @@ class Taxonomy
     public static function create( $name, $pluralName, $forObjects = null, $slug = false, $attributes = null )
     {
         $defaultAttributes = array(
-            'labels'                => static::getLabels(),
+            'labels'                => static::getLabels($name, $pluralName),
             'rewrite'               => array( 'slug' => ( $slug !== false ? $slug : sanitize_title($name) ) ),
             'description'           => '',
             'public'                => true,
