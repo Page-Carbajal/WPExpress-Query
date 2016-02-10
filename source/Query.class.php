@@ -72,7 +72,7 @@ class Query
             $operator = 'IN';
         }
 
-        $this->metaConditions[] = array(
+        $this->termConditions[] = array(
             'taxonomy' => $taxonomySlug,
             'field'    => 'slug',
             'terms'    => $term,

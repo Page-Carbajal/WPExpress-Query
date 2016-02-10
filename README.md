@@ -4,6 +4,10 @@ An abstraction layer for WPDB.
  
 ##Change Log
 
+###Version 0.10.4
+
+- Fixed the query term method error
+
 ###Version 0.10.3
 
 - Implemented Taxonomy/all method
