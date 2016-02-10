@@ -6,7 +6,7 @@ An abstraction layer for WPDB.
 
 ###Version 0.10.4
 
-- Fixed the query term method error
+- Fixed the query term method error 
 
 ###Version 0.10.3
 
