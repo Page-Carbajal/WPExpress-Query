@@ -6,12 +6,13 @@ An abstraction layer for WPDB.
 
 ###Version 0.10.3
 
+- Implemented the sue of safeName on Taxonomy registration
+- Fixed Taxonomy query_vars declaration
 - Fixed label declarations
 
 
 ###Version 0.10.2
 
-- Fixed Taxonomy query_vars declaration
 - Fixed array_merge error
 
 

@@ -75,9 +75,11 @@ class Taxonomy
 
     public static function create( $name, $pluralName, $forObjects = null, $slug = false, $attributes = null )
     {
+        $safeName = sanitize_title($name);
+
         $defaultAttributes = array(
             'labels'                => static::getLabels($name, $pluralName),
-            'rewrite'               => array( 'slug' => ( $slug !== false ? $slug : sanitize_title($name) ) ),
+            'rewrite'               => array( 'slug' => ( $slug !== false ? $slug : $safeName ) ),
             'description'           => '',
             'public'                => true,
             'hierarchical'          => false,
@@ -89,7 +91,7 @@ class Taxonomy
             'show_admin_column'     => false,
             'meta_box_cb'           => null,
             'capabilities'          => array(),
-            'query_var'             => sanitize_title($name),
+            'query_var'             => $safeName,
             'update_count_callback' => '',
             '_builtin'              => false,
         );
@@ -107,9 +109,9 @@ class Taxonomy
             $defaultAttributes = array_merge($defaultAttributes, $attributes);
         }
 
-        register_taxonomy($name, $objects, $defaultAttributes);
+        register_taxonomy($safeName, $objects, $defaultAttributes);
 
-        return new static($name);
+        return new static($safeName);
     }
 
     public function edit( $newName, $newSlug = false )
