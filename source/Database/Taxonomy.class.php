@@ -174,6 +174,10 @@ class Taxonomy
             $arguments['slug'] = $this->termSlug;
         }
 
+        if( isset( $this->termsHideEmpty ) ) {
+            $arguments['hide_empty'] = $this->termsHideEmpty;
+        }
+
         // TODO: Complete the arguments list
 
         return $arguments;
