@@ -6,6 +6,7 @@ An abstraction layer for WPDB.
 
 ###Version 0.10.3
 
+- Implemented Taxonomy/all method
 - Implemented the sue of safeName on Taxonomy registration
 - Fixed Taxonomy query_vars declaration
 - Fixed label declarations

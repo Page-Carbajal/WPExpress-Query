@@ -12,6 +12,7 @@ class Taxonomy
     protected $capabilities;
     // Search Terms Parameters
     protected $termsLimit;
+    protected $termsHideEmpty;
     protected $termsOrder;
     protected $termsOrderBy;
     protected $termName;
@@ -176,6 +177,13 @@ class Taxonomy
         // TODO: Complete the arguments list
 
         return $arguments;
+    }
+
+    public function all()
+    {
+        $this->termsHideEmpty = 0;
+        $this->termsLimit = 0;
+        return $this;
     }
 
     public function getTerms()
