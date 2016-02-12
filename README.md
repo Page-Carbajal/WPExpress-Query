@@ -7,7 +7,44 @@ An abstraction layer for WPDB.
 
 ###TODO
 
-- Consider using Query::Taxonomy to standardize the use of the project
+
+- Tag to version 0.13.0
+- Add method Query::UserRole. Returns an instance of UserRole
+- Develop methods for UserRole class
+    - insert
+    - save
+    - delete
+    - get
+    - getAll
+    - getUsers
+    - addMember
+    - removeMember
+- Tag to version 0.12.0 
+- Add method Query::User. Returns an instance of User
+- Develop methods for User class
+    - insert
+    - save
+    - delete
+    - resetPassword
+    - get, get first, get last
+    - getCurrent
+    - getAll
+    - getByMeta
+    - getByEmail
+    - getMetaFields
+    - getRoles
+    - addRole
+    - removeRole
+    - makeAdmin
+    - getSites
+- Tag to version 0.11.0
+- Add methods insert, save and delete to Taxonomy class
+- Add methods insert, save and delete to Post class
+- Create method Tax it returns an instance of Database/Taxonomy. Create instance if none exists 
+- Deprecate method Posts
+- Create method Post it returns an instance of Database/Post. Create instance if none exists
+- Move all Post methods from Query to new Post class
+- Add Database/Post class 
 
 
 ###Version 0.10.4
