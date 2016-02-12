@@ -4,6 +4,12 @@ An abstraction layer for WPDB.
  
 ##Change Log
 
+
+###TODO
+
+- Consider using Query::Taxonomy to standardize the use of the project
+
+
 ###Version 0.10.4
 
 - Fixed the query term method error 
