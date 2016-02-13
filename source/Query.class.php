@@ -8,6 +8,9 @@
 namespace WPExpress;
 
 
+use WPExpress\Database\Taxonomy;
+
+
 class Query
 {
 
@@ -20,10 +23,10 @@ class Query
 
     public function __construct()
     {
-        $this->metaConditions = array();
+        $this->metaConditions     = array();
         $this->taxonomyConditions = array();
-        $this->metaRelation = $this->taxonomyRelation = 'AND';
-        $this->parameters = array( 'showposts' => 10 );
+        $this->metaRelation       = $this->taxonomyRelation = 'AND';
+        $this->parameters         = array( 'showposts' => 10 );
     }
 
     private function addParameter( $parameter, $value, $condition = null )
@@ -94,7 +97,7 @@ class Query
 
         if( is_array($value) ) {
             $operator = 'in';
-            $value = implode(',', $value);
+            $value    = implode(',', $value);
         }
         switch( $operator ) {
             case "like":
@@ -163,7 +166,7 @@ class Query
 
     public function get( $return = 'all' )
     {
-        $args = $this->buildArguments();
+        $args  = $this->buildArguments();
         $query = new \WP_Query($args);
         $posts = $query->get_posts();
         wp_reset_postdata();
@@ -229,7 +232,7 @@ class Query
     public static function getMetaValues( $metaKey, $transientExpiration = 300 )
     {
         global $wpdb;
-        $metaKey = sanitize_title($metaKey);
+        $metaKey     = sanitize_title($metaKey);
         $transientID = "_wpx_metavalues_for_{$metaKey}";
 
         if( $value = get_transient($transientID) ) {
@@ -239,6 +242,26 @@ class Query
             set_transient($transientID, $items, $transientExpiration);
             return $items;
         }
+    }
+
+    /**
+     * An abbreviation for the Taxonomy method
+     * @param $bean
+     * @return Taxonomy
+     */
+    public static function Tax( $bean )
+    {
+        return self::Taxonomy($bean);
+    }
+
+    /**
+     * A wrapper for the Taxonomy class constructor
+     * @param $bean string, or stdClass object for Taxonomy
+     * @return Taxonomy
+     */
+    public static function Taxonomy( $bean )
+    {
+        return new Taxonomy($bean);
     }
 
 }

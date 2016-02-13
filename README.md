@@ -7,7 +7,6 @@ An abstraction layer for WPDB.
 
 ###TODO
 
-
 - Tag to version 0.13.0
 - Add method Query::UserRole. Returns an instance of UserRole
 - Develop methods for UserRole class
@@ -44,7 +43,11 @@ An abstraction layer for WPDB.
 - Deprecate method Posts
 - Create method Post it returns an instance of Database/Post. Create instance if none exists
 - Move all Post methods from Query to new Post class
-- Add Database/Post class 
+- Add Database/Post class
+
+###Version 0.11.0 - Post class, Additional Taxonomy methods and streamlining of the Query class
+
+- Added wrapper methods Tax and Taxonomy to Query
 
 
 ###Version 0.10.4
