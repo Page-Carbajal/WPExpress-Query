@@ -7,11 +7,10 @@ namespace WPExpress\Database;
 class MetaField
 {
 
-    private $postID;
-
+    private        $postID;
     private static $order;
-
-    private static $limit = 0;
+    private static $limit               = 0;
+    private static $transientExpiration = 300;
 
     public function __construct( $postID = null )
     {
@@ -78,6 +77,13 @@ class MetaField
         }
     }
 
+    public static function setTransientExpiration( $seconds = 300 )
+    {
+        if( intval($seconds) >= 0 ) {
+            self::$transientExpiration = $seconds;
+        }
+    }
+
     public static function getAll( $metaKey, $postIDs = null )
     {
         // By default query all posts, other add where post_id in $postIDs
@@ -86,6 +92,20 @@ class MetaField
     public static function getDistinct( $metaKey, $postIDs = null )
     {
         // By default query all posts, other add where post_id in $postIDs
+        global $wpdb;
+        $metaKey     = sanitize_title($metaKey);
+        $transientID = "_wpx_metavalues_for_{$metaKey}";
+
+        //TODO: Set sorting
+        //TODO: Filter by postIDs
+
+        if( $value = get_transient($transientID) ) {
+            return $value;
+        } else {
+            $items = $wpdb->get_col("SELECT DISTINCT meta_value FROM {$wpdb->postmeta} WHERE (meta_key = '{$metaKey}' AND meta_key IS NOT NULL) ORDER BY meta_value;");
+            set_transient($transientID, $items, self::$transientExpiration);
+            return $items;
+        }
 
     }
 
