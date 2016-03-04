@@ -53,6 +53,8 @@ An abstraction layer for WPDB.
 
 ###Version 0.11.0 - Post class, Additional Taxonomy methods and streamlining of the Query class
 
+- Added method Query::Meta
+- Deleted all commented code on Query class
 - Prepared function Query::getMetaValues for deprecation
 - Moved all the Post code to the Post class
 - Finished basic implementation of MetaField::getDistinct 
