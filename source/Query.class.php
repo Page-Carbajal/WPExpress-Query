@@ -8,6 +8,7 @@
 namespace WPExpress;
 
 
+use WPExpress\Database\MetaField;
 use WPExpress\Database\Taxonomy;
 
 
@@ -238,7 +239,7 @@ class Query
         if( $value = get_transient($transientID) ) {
             return $value;
         } else {
-            $items = $wpdb->get_col("SELECT DISTINCT meta_value FROM {$wpdb->postmeta} WHERE (meta_key = '{$metaKey}' AND meta_key IS NOT NULL);");
+            $items = $wpdb->get_col("SELECT DISTINCT meta_value FROM {$wpdb->postmeta} WHERE (meta_key = '{$metaKey}' AND meta_key IS NOT NULL) ORDER BY meta_value;");
             set_transient($transientID, $items, $transientExpiration);
             return $items;
         }
@@ -262,6 +263,14 @@ class Query
     public static function Taxonomy( $bean )
     {
         return new Taxonomy($bean);
+    }
+
+
+    /********* Meta *********/
+
+    public static function MetaFields()
+    {
+        return new MetaField();
     }
 
 }

@@ -37,16 +37,26 @@ An abstraction layer for WPDB.
     - makeAdmin
     - getSites
 - Tag to version 0.11.0
+- Develop methods for MetaField class
+    - Save
+    - Delete
+    - getAll
+    - getDistinct
 - Add methods insert, save and delete to Taxonomy class
 - Add methods insert, save and delete to Post class
 - Create method Tax it returns an instance of Database/Taxonomy. Create instance if none exists 
 - Deprecate method Posts
 - Create method Post it returns an instance of Database/Post. Create instance if none exists
 - Move all Post methods from Query to new Post class
-- Add Database/Post class
+
+
 
 ###Version 0.11.0 - Post class, Additional Taxonomy methods and streamlining of the Query class
 
+- Added Metafields method to Query
+- Created all empty methods for the MetaField class  
+- Added empty Database/MetaField
+- Added empty Database/Post
 - Added wrapper methods Tax and Taxonomy to Query
 
 
