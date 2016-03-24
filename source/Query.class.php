@@ -31,6 +31,12 @@ class Query
         return $posts->postType('post');
     }
 
+    public function Pages()
+    {
+        $posts = new Post();
+        return $posts->postType('page');
+    }
+
     /**
      * Returns an new instance to the class Database\Post. Sets the postType property to 'post'. Use method get to return values.
      *

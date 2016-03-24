@@ -4,6 +4,9 @@
 namespace WPExpress\Database;
 
 
+//TODO: Drop this class, move the method getDistinct to Query as a Helper Method
+
+
 class MetaField
 {
 
@@ -95,9 +98,6 @@ class MetaField
         global $wpdb;
         $metaKey     = sanitize_title($metaKey);
         $transientID = "_wpx_metavalues_for_{$metaKey}";
-
-        //TODO: Set sorting
-        //TODO: Filter by postIDs
 
         if( $value = get_transient($transientID) ) {
             return $value;

@@ -7,52 +7,47 @@ An abstraction layer for WPDB.
 
 ###TODO
 
-- Tag to version 0.13.0
-- Add method Query::UserRole. Returns an instance of UserRole
-- Develop methods for UserRole class
-    - insert
-    - save
-    - delete
-    - get
-    - getAll
-    - getUsers
-    - addMember
-    - removeMember
-- Tag to version 0.12.0 
-- Add method Query::User. Returns an instance of User
-- Develop methods for User class
-    - insert
-    - save
-    - delete
-    - resetPassword
-    - get, get first, get last
-    - getCurrent
-    - getAll
-    - getByMeta
-    - getByEmail
-    - getMetaFields
-    - getRoles
-    - addRole
-    - removeRole
-    - makeAdmin
-    - getSites
-- Tag to version 0.11.0
-- Develop methods for MetaField class
-    - Save
-    - Delete
-    - getAll
-    - getDistinct
-- Add methods insert, save and delete to Taxonomy class
-- Add methods insert, save and delete to Post class
-- Create method Tax it returns an instance of Database/Taxonomy. Create instance if none exists 
-- Deprecate method Posts
-- Create method Post it returns an instance of Database/Post. Create instance if none exists
-- Move all Post methods from Query to new Post class
-
+- Version 0.13.0
+    - Add method Query::UserRole. Returns an instance of UserRole
+    - Develop methods for UserRole class
+        - insert
+        - save
+        - delete
+        - get
+        - getAll
+        - getUsers
+        - addMember
+        - removeMember
+- Version 0.12.0 
+    - Refactor Taxonomy class
+    - Add methods insert, save and delete to Taxonomy class
+    - Add methods insert, save and delete to Post class
+    - Develop methods for User class
+        - insert
+        - save
+        - delete
+        - resetPassword
+        - get, get first, get last
+        - getCurrent
+        - getAll
+        - getByMeta
+        - getByEmail
+        - getMetaFields
+        - getRoles
+        - addRole
+        - removeRole
+        - makeAdmin
+        - getSites
+    - Add method Query::User. Returns an instance of User
 
 
 ###Version 0.11.0 - Post class, Additional Taxonomy methods and streamlining of the Query class
 
+- Finished methods Post/sortBy and Post/sortOrder
+- Created method Pages. Works just like custom but it sets the type to Page
+- Create method Tax it returns an instance of Database/Taxonomy 
+- Created method Posts it returns an instance of Database/Post
+- Moved all Post methods from Query to new Post class
 - Added method Query::Meta
 - Deleted all commented code on Query class
 - Prepared function Query::getMetaValues for deprecation

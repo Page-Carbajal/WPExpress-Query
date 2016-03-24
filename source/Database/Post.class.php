@@ -180,16 +180,23 @@ class Post
         return $bean;
     }
 
+    private function parseOrderField( $field )
+    {
+        $list    = array( 'none', 'ID', 'author', 'title', 'name', 'type', 'date', 'modified', 'parent', 'rand', 'comment_count', 'menu_order' );
+        return ( in_array($field, $list) ? $field : 'date' );
+    }
+
     // Sorting
     public function sortBy( $field )
     {
-        // TODO: Add functionality
+
+        $this->addParameter('orderby', $field);
         return $this;
     }
 
-    public function sortOrder( $ascendingOrder = true )
+    public function sortOrder( $ascendingOrder = false )
     {
-        // TODO: Add functionality
+        $this->addParameter('order', ( true == $ascendingOrder ? 'ASC' : 'DESC' ));
         return $this;
     }
 
