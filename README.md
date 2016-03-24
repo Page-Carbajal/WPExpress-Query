@@ -43,6 +43,7 @@ An abstraction layer for WPDB.
 
 ###Version 0.11.0 - Post class, Additional Taxonomy methods and streamlining of the Query class
 
+- Added sorting Alias methods 
 - Finished methods Post/sortBy and Post/sortOrder
 - Created method Pages. Works just like custom but it sets the type to Page
 - Create method Tax it returns an instance of Database/Taxonomy 

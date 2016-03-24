@@ -182,7 +182,7 @@ class Post
 
     private function parseOrderField( $field )
     {
-        $list    = array( 'none', 'ID', 'author', 'title', 'name', 'type', 'date', 'modified', 'parent', 'rand', 'comment_count', 'menu_order' );
+        $list = array( 'none', 'ID', 'author', 'title', 'name', 'type', 'date', 'modified', 'parent', 'rand', 'comment_count', 'menu_order' );
         return ( in_array($field, $list) ? $field : 'date' );
     }
 
@@ -200,4 +200,34 @@ class Post
         return $this;
     }
 
+    // Alias
+    public function orderByDate( $newerFirst = true )
+    {
+        $this->sortBy('date')->sortOrder(!$newerFirst);
+        return $this;
+    }
+
+    public function orderByEditionDate( $newerFirst = true )
+    {
+        $this->sortBy('modified')->sortOrder(!$newerFirst);
+        return $this;
+    }
+
+    public function orderByTitle( $aToZ = true )
+    {
+        $this->sortBy('title')->sortOrder($aToZ);
+        return $this;
+    }
+
+    public function orderBySlug( $aToZ = true )
+    {
+        $this->sortBy('name')->sortOrder($aToZ);
+        return $this;
+    }
+
+    public function orderByMenuOrder( $lowToHigh = true )
+    {
+        $this->sortBy('name')->sortOrder($lowToHigh);
+        return $this;
+    }
 }
