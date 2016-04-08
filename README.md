@@ -41,8 +41,11 @@ An abstraction layer for WPDB.
     - Add method Query::User. Returns an instance of User
 
 
-###Version 0.11.0 - Post class, Additional Taxonomy methods and streamlining of the Query class
+###Version 1.0.0 - Post class, Additional Taxonomy methods and streamlining of the Query class
 
+- Deprecated method Query::getMetaFieldValues
+- Ported method MetaField/getDistinct to Post/getMetaFieldValues
+- Deprecated methods Query/MetaField and Query/Meta
 - Added sorting Alias methods 
 - Finished methods Post/sortBy and Post/sortOrder
 - Created method Pages. Works just like custom but it sets the type to Page

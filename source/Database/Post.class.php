@@ -13,6 +13,7 @@ class Post
     private $metaRelation;
     private $taxonomyConditions;
     private $taxonomyRelation;
+    private $postType;
 
     public function __construct()
     {
@@ -130,6 +131,7 @@ class Post
 
     public function postType( $type )
     {
+        $this->postType = $type;
         $this->addParameter('post_type', $type);
         return $this;
     }
@@ -229,5 +231,25 @@ class Post
     {
         $this->sortBy('name')->sortOrder($lowToHigh);
         return $this;
+    }
+
+    /* Helper Methods */
+
+    public function getMetaFieldValues( $metaKey )
+    {
+        // By default query all posts, other add where post_id in $postIDs
+        global $wpdb;
+        $metaKey     = sanitize_title($metaKey);
+        $transientID = "_wpx_metavalues_for_{$this->postType}_{$metaKey}";
+
+        if( $value = get_transient($transientID) ) {
+            return $value;
+        } else {
+            $whereClause = "WHERE (meta_key = '{$metaKey}' AND meta_key IS NOT NULL)";
+            $whereClause .= " AND AND post_id IN ( SELECT ID FROM {$wpdb->posts} AS posts WHERE posts.post_type = '{$this->postType}' ) ";
+            $items = $wpdb->get_col("SELECT DISTINCT meta_value FROM {$wpdb->postmeta} {$whereClause} ORDER BY meta_value;");
+            set_transient($transientID, $items, self::$transientExpiration);
+            return $items;
+        }
     }
 }

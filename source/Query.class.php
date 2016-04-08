@@ -8,7 +8,6 @@
 namespace WPExpress;
 
 
-use WPExpress\Database\MetaField;
 use WPExpress\Database\Post;
 use WPExpress\Database\Taxonomy;
 
@@ -68,21 +67,5 @@ class Query
     {
         return new Taxonomy($bean);
     }
-
-    public static function Meta( $postID = null )
-    {
-        return self::MetaFields($postID);
-    }
-
-    public static function MetaFields( $postID = null )
-    {
-        return new MetaField($postID);
-    }
-
-
-    /*******Legacy Method / Will be Droped on 1.0.0*******/
-    public static function getMetaValues( $metaKey, $deprecated = 300 )
-    {
-        return MetaField::getDistinct($metaKey);
-    }
+    
 }
