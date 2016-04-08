@@ -45,6 +45,8 @@ An abstraction layer for WPDB.
 
 We are bumping the major version here because we have made significant changes to the API.
 
+- Dropped CRUD methods from Taxonomy class
+- Added relational methods to Taxonomy class
 - Finished Taxonomy class refactoring
 - Added methods Post/onlyID and Post/parentIDs. Closes #3
 - Added method Post/getSQLRequest. Closes #2
