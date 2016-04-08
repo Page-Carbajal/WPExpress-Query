@@ -85,35 +85,39 @@ class Post
 
     public function meta( $field, $value, $operator = null )
     {
-        $compare = '=';
-        if( !empty( $operator ) ) {
-            $operator = trim(strtolower($operator));
+        $allowedOperators = array( '=', '!=', '>', '>=', '<', '<=', 'LIKE', 'NOT LIKE', 'IN', 'NOT IN', 'BETWEEN', 'NOT BETWEEN', 'NOT EXISTS', 'REGEXP', 'NOT REGEXP' );
+
+        $needTypeNumber = array( '>', '>=', '<', '<=' );
+        $needArrayValue = array( 'IN', 'NOT IN', 'BETWEEN', 'NOT BETWEEN' );
+
+        $metaCompare = ( in_array($operator, $allowedOperators) ? $operator : '=' );
+
+        // Set $metaCompare = IN if value is an array and $metaCompare is not a $needArrayValue item
+        if( !in_array($metaCompare, $needArrayValue) && is_array($value) ) {
+            $metaCompare = 'IN';
         }
 
-        if( is_array($value) ) {
-            $operator = 'in';
-            $value    = implode(',', $value);
-        }
-        switch( $operator ) {
-            case "like":
-                $compare = "like";
-                break;
-            case "in":
-                $compare = "in";
-                break;
-            case "not":
-                $compare = "not";
-                break;
-            default:
-                $compare = "=";
-                break;
+        // Force value to array if $metaCompare is a $needArrayValue item and $value is not an array
+        if( in_array($metaCompare, $needArrayValue) && !is_array($value) ) {
+            // Allow for the use of commas to separate values
+            if( false !== strpos($value, ',') ) {
+                $value = implode(',', $value);
+            } else {
+                $value = array( $value );
+            }
         }
 
-        $this->metaConditions[] = array(
+        $conditions = array(
             'key'     => $field,
             'value'   => $value,
-            'compare' => $compare,
+            'compare' => $metaCompare,
         );
+
+        if( in_array($metaCompare, $needTypeNumber) ) {
+            $conditions['type'] = 'numeric';
+        }
+
+        $this->metaConditions[] = $conditions;
 
         return $this;
     }
