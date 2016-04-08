@@ -43,6 +43,7 @@ An abstraction layer for WPDB.
 
 ###Version 1.0.0 - Post class, Additional Taxonomy methods and streamlining of the Query class
 
+- Added methods Post/onlyID and Post/parentIDs. Closes #3
 - Added method Post/getSQLRequest. Closes #2
 - Extended the number of operators allowed for meta_query. Closes #1
 - Deleted Database/MetaField class from Repository

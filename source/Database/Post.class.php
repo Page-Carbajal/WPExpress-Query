@@ -162,6 +162,20 @@ class Post
         return $this->parameters;
     }
 
+    public function onlyID()
+    {
+        $this->parameters['fields'] = 'ids';
+
+        return $this;
+    }
+
+    public function parentIDs()
+    {
+        $this->parameters['fields'] = 'id=>parent';
+
+        return $this;
+    }    
+
     public function getSQLRequest()
     {
         return $this->sqlRequest;
