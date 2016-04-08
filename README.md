@@ -43,7 +43,8 @@ An abstraction layer for WPDB.
 
 ###Version 1.0.0 - Post class, Additional Taxonomy methods and streamlining of the Query class
 
-- Extended the number of operators allowed for meta_query
+- Added method Post/getSQLRequest. Closes #2
+- Extended the number of operators allowed for meta_query. Closes #1
 - Deleted Database/MetaField class from Repository
 - Deprecated method Query::getMetaFieldValues
 - Ported method MetaField/getDistinct to Post/getMetaFieldValues

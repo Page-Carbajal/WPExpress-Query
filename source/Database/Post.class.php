@@ -14,6 +14,7 @@ class Post
     private $taxonomyConditions;
     private $taxonomyRelation;
     private $postType;
+    private $sqlRequest;
 
     public function __construct()
     {
@@ -124,18 +125,15 @@ class Post
 
     public function metaRelation( $useAND = true )
     {
-        if( $useAND ) {
-            $this->metaRelation = 'AND';
-        } else {
-            $this->metaRelation = 'OR';
-        }
+        $this->metaRelation = ($useAND ? 'AND' : 'OR');
+
         return $this;
     }
 
 
     public function postType( $type )
     {
-        $this->postType = $type;
+        $this->postType = $type; // Used on metaFieldValues
         $this->addParameter('post_type', $type);
         return $this;
     }
@@ -164,12 +162,19 @@ class Post
         return $this->parameters;
     }
 
+    public function getSQLRequest()
+    {
+        return $this->sqlRequest;
+    }
+
     public function get( $return = 'all' )
     {
         $args  = $this->buildArguments();
         $query = new \WP_Query($args);
         $posts = $query->get_posts();
         wp_reset_postdata();
+        
+        $this->sqlRequest = $query->request;
 
         $bean = $posts;
         switch( $return ) {
