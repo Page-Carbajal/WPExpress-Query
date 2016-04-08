@@ -6,5 +6,10 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'WPExpress\\Database\\Post' => $baseDir . '/source/Database/Post.class.php',
+    'WPExpress\\Database\\Taxonomy' => $baseDir . '/source/Database/Taxonomy.class.php',
+    'WPExpress\\Database\\Transient' => $baseDir . '/source/Database/Transient.class.php',
+    'WPExpress\\Database\\User' => $baseDir . '/source/Database/User.class.php',
+    'WPExpress\\Database\\UserRole' => $baseDir . '/source/Database/UserRole.class.php',
     'WPExpress\\Query' => $baseDir . '/source/Query.class.php',
 );
