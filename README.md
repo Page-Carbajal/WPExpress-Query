@@ -7,42 +7,45 @@ An abstraction layer for WPDB.
 
 ###TODO
 
-- Version 0.13.0
-    - Add method Query::UserRole. Returns an instance of UserRole
-    - Develop methods for UserRole class
-        - insert
-        - save
-        - delete
-        - get
-        - getAll
-        - getUsers
-        - addMember
-        - removeMember
-- Version 0.12.0 
-    - Refactor Taxonomy class
-    - Add methods insert, save and delete to Taxonomy class
-    - Add methods insert, save and delete to Post class
-    - Develop methods for User class
-        - insert
-        - save
-        - delete
-        - resetPassword
-        - get, get first, get last
-        - getCurrent
-        - getAll
-        - getByMeta
-        - getByEmail
-        - getMetaFields
-        - getRoles
-        - addRole
-        - removeRole
-        - makeAdmin
-        - getSites
-    - Add method Query::User. Returns an instance of User
+###Next minor
+- Add method Query::UserRole. Returns an instance of UserRole
+- Develop methods for UserRole class
+    - insert
+    - save
+    - delete
+    - get
+    - getAll
+    - getUsers
+    - addMember
+    - removeMember
+
+###Next minor 
+- Add methods insert, save and delete to Taxonomy class
+- Add methods insert, save and delete to Post class
+- Develop methods for User class
+    - insert
+    - save
+    - delete
+    - resetPassword
+    - get, get first, get last
+    - getCurrent
+    - getAll
+    - getByMeta
+    - getByEmail
+    - getMetaFields
+    - getRoles
+    - addRole
+    - removeRole
+    - makeAdmin
+    - getSites
+- Add method Query::User. Returns an instance of User
 
 
 ###Version 1.0.0 - Post class, Additional Taxonomy methods and streamlining of the Query class
 
+We are bumping the major version here because we have made significant changes to the API.
+
+- Finished Taxonomy class refactoring
 - Added methods Post/onlyID and Post/parentIDs. Closes #3
 - Added method Post/getSQLRequest. Closes #2
 - Extended the number of operators allowed for meta_query. Closes #1

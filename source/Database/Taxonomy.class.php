@@ -72,7 +72,7 @@ class Taxonomy
     }
 
 
-    /****CRUD Methods****/
+    /** CRUD Methods **/
 
     public static function create( $name, $pluralName, $forObjects = null, $slug = false, $attributes = null )
     {
@@ -115,27 +115,34 @@ class Taxonomy
         return new static($safeName);
     }
 
-    public function edit( $newName, $newSlug = false )
+    /** Search Methods **/
+    
+    public function slug( $slug )
     {
-
+        $this->termSlug = $slug;
+        return $this;
     }
 
-    public function delete()
+    public function name( $name )
     {
-
+        $this->termName = $name;
+        return $this;
     }
 
-    /*****Add to Object*****/
-
-    public function classifyObject( $postID )
+    public function all()
     {
-        // TODO:
+        $this->termsHideEmpty = 0;
+        $this->termsLimit     = 0;
+        return $this;
+    }
+    
+    public function limit( $limit )
+    {
+        $this->termsLimit = intval($limit);
+        return $this;
     }
 
-
-    /*****Search Methods*****/
-
-    public function setTermsOrder( $orderBy, $asc = true )
+    public function setOrder( $orderBy, $asc = true )
     {
         if( !empty( $orderBy ) ) {
             $this->termsOrderBy = $orderBy;
@@ -143,12 +150,6 @@ class Taxonomy
 
         $this->termsOrder = ( $asc === true ? 'ASC' : 'DESC' );
 
-        return $this;
-    }
-
-    public function setTermsLimit( $limit )
-    {
-        $this->termsLimit = intval($limit);
         return $this;
     }
 
@@ -182,49 +183,43 @@ class Taxonomy
 
         return $arguments;
     }
-
-    public function all()
-    {
-        $this->termsHideEmpty = 0;
-        $this->termsLimit = 0;
-        return $this;
-    }
-
-    public function getTerms()
+    
+    public function get()
     {
         $terms = get_terms(array( $this->name ), $this->getTermsArguments());
         return $terms;
     }
-
-    private function setTermSlug( $slug )
+    
+    /** Traversing Methods **/
+    
+    public function getTermBySlug( $slug, $single = true )
     {
-        $this->termSlug = $slug;
-        return $this;
-    }
-
-    public function getTermBySlug( $slug, $asArray = false )
-    {
-        $terms = $this->setTermSlug($slug)->setTermsLimit(1)->setTermsOrder('name', true)->getTerms();
+        $terms = $this->slug($slug)->limit(1)->setOrder('name', true)->get();
         if( is_array($terms) ) {
-            return ( $asArray ? $terms : reset($terms) );
+            return ( $single ? reset($terms) : $terms );
         }
 
         return false;
     }
 
-    private function setTermName( $name )
+    public function getTermByName( $name, $single = true )
     {
-        $this->termName = $name;
-        return $this;
-    }
-
-    public function getTermByName( $name, $asArray = false )
-    {
-        $terms = $this->setTermName($name)->setTermsLimit(1)->setTermsOrder('name', true)->getTerms();
+        $terms = $this->name($name)->limit(1)->setOrder('name', true)->get();
         if( is_array($terms) ) {
-            return ( $asArray ? $terms : reset($terms) );
+            return ( $single ? reset($terms) : $terms );
         }
 
         return false;
+    }
+
+    /** Relate to Post Methods **/
+
+    public function addToPost( $bean )
+    {
+
+    }
+
+    public function removeFromPost( $bean )
+    {
     }
 }
