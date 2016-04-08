@@ -7,20 +7,7 @@ An abstraction layer for WPDB.
 
 ###TODO
 
-###Next minor
-- Add method Query::UserRole. Returns an instance of UserRole
-- Develop methods for UserRole class
-    - insert
-    - save
-    - delete
-    - get
-    - getAll
-    - getUsers
-    - addMember
-    - removeMember
-
 ###Next minor 
-- Add methods insert, save and delete to Taxonomy class
 - Add methods insert, save and delete to Post class
 - Develop methods for User class
     - insert
@@ -28,16 +15,9 @@ An abstraction layer for WPDB.
     - delete
     - resetPassword
     - get, get first, get last
-    - getCurrent
     - getAll
     - getByMeta
     - getByEmail
-    - getMetaFields
-    - getRoles
-    - addRole
-    - removeRole
-    - makeAdmin
-    - getSites
 - Add method Query::User. Returns an instance of User
 
 
@@ -45,6 +25,7 @@ An abstraction layer for WPDB.
 
 We are bumping the major version here because we have made significant changes to the API.
 
+- Removed WPExpress/Model related methods 
 - Dropped CRUD methods from Taxonomy class
 - Added relational methods to Taxonomy class
 - Finished Taxonomy class refactoring
