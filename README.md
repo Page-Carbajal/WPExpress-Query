@@ -32,7 +32,7 @@ function getFiveBooksPermalinks()
 **Run a DB Query to get 5 posts**
 
 ```php
-    $posts = Posts()->limit(5)->get();
+    $Posts = Posts()->limit(5)->get();
 
     foreach($Posts as $post)
     {
