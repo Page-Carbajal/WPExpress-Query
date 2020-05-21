@@ -2,6 +2,7 @@
 
 ## Version 1.0.2 - May 21st
 
+- Documentation update: Removed Roadmap
 - Refactored class names for PRS-4 compliance
 
 
