@@ -1,4 +1,9 @@
-## Change Log
+# WP Express Query - Change Log
+
+## Version 1.0.2 - May 21st
+
+- Refactored class names for PRS-4 compliance
+
 
 ## Version 1.0.1 
 
