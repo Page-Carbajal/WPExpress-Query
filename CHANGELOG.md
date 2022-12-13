@@ -1,11 +1,18 @@
 ## Change Log
 
-## Version 1.0.1 
+
+### December 12th - Version 1.1.0
+
+- Deprecated .class.php to comply with PSR4
+- Dropped vendor directory from repo
+
+
+### Version 1.0.1 
 
 - Fixed issued: License "GPL3" is not a valid SPDX license identifier
 
 
-## Version 1.0.0 - Post class, Additional Taxonomy methods and streamlining of the Query class
+### Version 1.0.0 - Post class, Additional Taxonomy methods and streamlining of the Query class
 
 - Removed WPExpress/Model related methods 
 - Dropped CRUD methods from Taxonomy class
@@ -36,12 +43,12 @@
 - Added wrapper methods Tax and Taxonomy to Query
 
 
-## Version 0.10.4
+### Version 0.10.4
 
 - Fixed the query term method error 
 
 
-## Version 0.10.3
+### Version 0.10.3
 
 - Implemented Taxonomy/all method
 - Implemented the sue of safeName on Taxonomy registration
@@ -49,23 +56,23 @@
 - Fixed label declarations
 
 
-## Version 0.10.2
+### Version 0.10.2
 
 - Fixed array_merge error
 
 
-## Version 0.10.1
+### Version 0.10.1
 
 - Changed the Taxonomy registration
 
 
-## Version 0.10.0
+### Version 0.10.0
 
 - Added empty User, UserRole and Transient classes 
 - Added Taxonomy class
 
 
-## Version 0.9.0
+### Version 0.9.0
 
 - Enhanced the get method
 - Implemented function where
@@ -73,7 +80,7 @@
 - Code refactoring
 
 
-## Version 0.8.0 
+### Version 0.8.0 
 
 - Creating a independent repository for this project
 
